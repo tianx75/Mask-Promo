@@ -1,1246 +1,679 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTIMA LED Beauty Mask – Prémium otthoni fényterápia | The Ultimate Beauty Clinic</title>
-    <meta name="description" content="ULTIMA LED Beauty Mask – 4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. 93 gramm, IP67 vízálló, beépített szemvédelem. The Ultimate Beauty Clinic, Budapest.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-card: #161616;
-            --bg-card-hover: #1c1c1c;
-            --gold: #c9a96e;
-            --gold-light: #e4cfa0;
-            --gold-dark: #9a7b4f;
-            --red-glow: #c0392b;
-            --blue-glow: #3498db;
-            --text-primary: #f0ece4;
-            --text-secondary: #a09a90;
-            --text-muted: #6b665e;
-            --border: #2a2520;
-            --accent-glow: rgba(201, 169, 110, 0.08);
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Outfit', sans-serif;
-        }
+    <title>The Ultimate Beauty | Prémium Esztétikai Klinika</title>
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Az ULTIMA HILEFT technológia és hialuronsavas feltöltések kombinációja: következő generációs arcfiatalítás Budán. Természetes eredmény, svájci precizitással.">
+    <meta name="keywords" content="arcfiatalítás, hialuronsav, ULTIMA HILEFT, esztétikai kezelés, Budapest, bőrfiatalítás, filler">
 
-        html { scroll-behavior: smooth; font-size: 16px; }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theultimatebeauty.hu/">
+    <meta property="og:title" content="The Ultimate Beauty | Prémium Esztétikai Klinika">
+    <meta property="og:description" content="Következő generációs arcfiatalítás: ULTIMA HILEFT™ és hialuronsavas feltöltések szinergiája.">
+    <meta property="og:image" content="images/clinic-lounge.png">
 
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-weight: 300;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://theultimatebeauty.hu/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-        }
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .section { padding: 7rem 0; position: relative; }
-
-        .section-label {
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .section-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 300;
-            line-height: 1.2;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-        .section-title em { font-style: italic; color: var(--gold-light); }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 1.5rem 0;
-            transition: all 0.5s ease;
-            background: transparent;
-        }
-        .nav.scrolled {
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .nav .container { display: flex; justify-content: space-between; align-items: center; }
-
-        .nav-logo {
-            font-family: var(--font-body);
-            font-weight: 200;
-            font-size: 1.4rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-        .nav-logo span { color: var(--gold); font-weight: 400; }
-
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.8rem; font-weight: 400;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--gold); }
-
-        .nav-cta {
-            padding: 0.65rem 1.8rem;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold) !important;
-            font-size: 0.75rem !important;
-            letter-spacing: 0.15em !important;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-        .nav-cta:hover { background: var(--gold); color: var(--bg-primary) !important; }
-
-        .mobile-toggle {
-            display: none; flex-direction: column; gap: 5px;
-            background: none; border: none; cursor: pointer; padding: 5px;
-        }
-        .mobile-toggle span { width: 24px; height: 1px; background: var(--text-primary); transition: all 0.3s; }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%; right: -10%;
-            width: 70%; height: 120%;
-            background: radial-gradient(ellipse at center, rgba(192, 57, 43, 0.04) 0%, transparent 50%),
-                        radial-gradient(ellipse at 30% 50%, rgba(52, 152, 219, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 200px;
-            background: linear-gradient(to top, var(--bg-primary), transparent);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.5rem 1.2rem;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.7rem; font-weight: 400;
-            letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: 2rem;
-            opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
-        }
-        .hero-badge::before {
-            content: ''; width: 6px; height: 6px;
-            background: var(--gold); border-radius: 50%;
-            animation: pulse 2s ease infinite;
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 300; line-height: 1.05;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
-        }
-        .hero h1 .line-gold { color: var(--gold-light); font-style: italic; }
-
-        .hero-desc {
-            font-size: 1.15rem; color: var(--text-secondary);
-            max-width: 560px; margin: 0 auto 2rem;
-            opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
-        }
-
-        .hero-stats {
-            display: flex; gap: 3rem; justify-content: center;
-            margin-bottom: 2.5rem;
-            opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
-        }
-        .hero-stat {
-            position: relative;
-            padding: 0 1.5rem;
-        }
-        .hero-stat:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0; top: 10%; height: 80%;
-            width: 1px;
-            background: var(--border);
-        }
-        .hero-stat-num {
-            font-family: var(--font-display);
-            font-size: 2.5rem; font-weight: 300;
-            color: var(--gold); line-height: 1;
-        }
-        .hero-stat-label {
-            font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.15em; color: var(--text-muted); margin-top: 0.3rem;
-        }
-
-        .hero-buttons {
-            display: flex; gap: 1.5rem; align-items: center;
-            justify-content: center;
-            opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
-        }
-
-        .hero-banner {
-            margin-top: 4rem;
-            opacity: 0; animation: fadeUp 1s ease forwards 0.9s;
-        }
-        .hero-banner img {
-            width: 100%;
-            max-width: 1000px;
-            display: block;
-            margin: 0 auto;
-            border-radius: 4px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-        }
-
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: var(--gold); color: var(--bg-primary);
-            font-family: var(--font-body);
-            font-size: 0.8rem; font-weight: 500;
-            letter-spacing: 0.15em; text-transform: uppercase;
-            text-decoration: none; border: none; cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative; overflow: hidden;
-        }
-        .btn-primary::after { content: '→'; transition: transform 0.3s; }
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201,169,110,0.2);
-        }
-        .btn-primary:hover::after { transform: translateX(4px); }
-
-        .btn-secondary {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.8rem; letter-spacing: 0.1em;
-            text-transform: uppercase; font-weight: 400;
-            transition: color 0.3s;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.25rem;
-        }
-        .btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
-
-        .img-placeholder {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); font-size: 0.75rem;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            position: relative; overflow: hidden;
-        }
-        .img-placeholder::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(201,169,110,0.03) 0%, transparent 60%);
-        }
-
-        .wave-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-        .wave-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .wave-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--gold-dark);
-        }
-        .wave-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-        }
-        .wave-card[data-color="nir"]::before { background: linear-gradient(90deg, #8b0000, #b22222); }
-        .wave-card[data-color="red"]::before { background: linear-gradient(90deg, #c0392b, #e74c3c); }
-        .wave-card[data-color="yellow"]::before { background: linear-gradient(90deg, #d4a017, #f1c40f); }
-        .wave-card[data-color="blue"]::before { background: linear-gradient(90deg, #2471a3, #3498db); }
-
-        .wave-nm {
-            font-family: var(--font-display);
-            font-size: 2.8rem; font-weight: 300;
-            line-height: 1; margin-bottom: 0.25rem;
-        }
-        .wave-card[data-color="nir"] .wave-nm { color: #b22222; }
-        .wave-card[data-color="red"] .wave-nm { color: #e74c3c; }
-        .wave-card[data-color="yellow"] .wave-nm { color: #f1c40f; }
-        .wave-card[data-color="blue"] .wave-nm { color: #3498db; }
-
-        .wave-unit {
-            font-size: 0.7rem; letter-spacing: 0.15em;
-            text-transform: uppercase; color: var(--text-muted);
-            margin-bottom: 1.25rem;
-        }
-        .wave-name {
-            font-family: var(--font-display);
-            font-size: 1.15rem; font-weight: 400;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        .wave-desc {
-            font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;
-        }
-
-        .features-bg { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-        .feat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-        .feat-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            transition: all 0.4s ease;
-        }
-        .feat-card:hover { border-color: var(--gold-dark); transform: translateY(-3px); }
-
-        .feat-icon {
-            width: 48px; height: 48px;
-            border: 1px solid var(--gold-dark);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem; color: var(--gold);
-        }
-        .feat-card h4 {
-            font-family: var(--font-display);
-            font-size: 1.2rem; font-weight: 400;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        .feat-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
-
-        .synergy-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem; align-items: center;
-            margin-top: 3rem;
-        }
-        .synergy-visual {
-            aspect-ratio: 4/5;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            min-height: 500px;
-            border: 1px solid var(--border);
-            background: #000;
-        }
-        .synergy-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .synergy-visual:hover img { transform: scale(1.02); }
-
-        .synergy-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
-        .synergy-item {
-            display: grid;
-            grid-template-columns: 50px 1fr;
-            gap: 1.25rem; align-items: start;
-        }
-        .synergy-num {
-            font-family: var(--font-display);
-            font-size: 1.8rem; font-weight: 300;
-            color: var(--gold); line-height: 1;
-        }
-        .synergy-item h4 {
-            font-family: var(--font-display);
-            font-size: 1.15rem; font-weight: 400;
-            margin-bottom: 0.4rem; color: var(--text-primary);
-        }
-        .synergy-item p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
-
-        .vs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        .vs-col {
-            padding: 3rem;
-            border: 1px solid var(--border);
-        }
-        .vs-col.vs-ultima {
-            background: rgba(201,169,110,0.04);
-            border-color: var(--gold-dark);
-        }
-        .vs-col.vs-others { background: var(--bg-card); }
-
-        .vs-col-title {
-            font-family: var(--font-display);
-            font-size: 1.6rem; font-weight: 400;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .vs-ultima .vs-col-title { color: var(--gold-light); border-color: var(--gold-dark); }
-        .vs-others .vs-col-title { color: var(--text-muted); }
-
-        .vs-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-        .vs-list li {
-            font-size: 0.92rem; color: var(--text-secondary);
-            padding-left: 1.75rem; position: relative; line-height: 1.6;
-        }
-        .vs-ultima .vs-list li::before {
-            content: '✦'; position: absolute; left: 0; top: 0;
-            color: var(--gold); font-size: 0.7rem;
-        }
-        .vs-others .vs-list li::before {
-            content: '—'; position: absolute; left: 0; top: 0;
-            color: var(--text-muted);
-        }
-
-        .spec-table {
-            width: 100%; border-collapse: collapse; margin-top: 3rem;
-        }
-        .spec-table th, .spec-table td {
-            padding: 1.1rem 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
-        .spec-table thead th {
-            font-family: var(--font-body);
-            font-weight: 500; font-size: 0.7rem;
-            letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--text-muted);
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--gold-dark);
-        }
-        .spec-table tbody tr { transition: background 0.3s; }
-        .spec-table tbody tr:hover { background: rgba(201,169,110,0.03); }
-        .spec-table td { color: var(--text-secondary); }
-        .spec-table td:first-child { color: var(--text-primary); font-weight: 400; }
-        .spec-table .gold-val { color: var(--gold-light); }
-
-        .science-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        .sci-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            transition: all 0.4s ease;
-        }
-        .sci-card:hover { border-color: var(--gold-dark); transform: translateY(-3px); }
-        .sci-card-num {
-            font-family: var(--font-display);
-            font-size: 3.5rem; font-weight: 300;
-            color: var(--gold); opacity: 0.3;
-            line-height: 1; margin-bottom: 1.25rem;
-        }
-        .sci-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem; font-weight: 400;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        .sci-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; }
-
-        .treat-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem; margin-top: 3rem;
-        }
-        .treat-item {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            transition: all 0.4s ease;
-        }
-        .treat-item:hover { border-color: var(--gold-dark); }
-        .treat-item h4 {
-            font-family: var(--font-display);
-            font-size: 1.1rem; font-weight: 400;
-            margin-bottom: 0.6rem; color: var(--gold-light);
-        }
-        .treat-item p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
-
-        .pricing-bg { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-        .pricing-card {
-            max-width: 600px; margin: 3rem auto 0;
-            background: var(--bg-primary);
-            border: 1px solid var(--gold-dark);
-            padding: 3.5rem; text-align: center;
-            position: relative;
-        }
-        .pricing-card::before {
-            content: '';
-            position: absolute; top: -1px; left: 20%; right: 20%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-        .pricing-treatment {
-            font-size: 0.75rem; font-weight: 500;
-            letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--text-muted); margin-bottom: 1.5rem;
-        }
-        .pricing-amount {
-            font-family: var(--font-display);
-            font-size: 3.5rem; font-weight: 300;
-            color: var(--gold-light); margin-bottom: 0.5rem;
-        }
-        .pricing-unit { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
-        .pricing-features {
-            list-style: none;
-            text-align: left;
-            border-top: 1px solid var(--border);
-            padding-top: 1.5rem;
-            margin-bottom: 2.5rem;
-            display: flex; flex-direction: column; gap: 0.75rem;
-        }
-        .pricing-features li {
-            font-size: 0.88rem; color: var(--text-secondary);
-            padding-left: 1.5rem; position: relative;
-        }
-        .pricing-features li::before {
-            content: '✓'; position: absolute; left: 0;
-            color: var(--gold); font-weight: 600;
-        }
-        .pricing-card .btn-primary { width: 100%; justify-content: center; }
-
-        .clinic-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem; align-items: center; margin-top: 3rem;
-        }
-        .clinic-visual {
-            aspect-ratio: 5/4;
-            border-radius: 2px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid var(--border);
-            background: #000;
-        }
-        .clinic-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .clinic-visual:hover img { transform: scale(1.02); }
-
-        .clinic-features { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
-        .clinic-feature {
-            display: flex; gap: 1rem; align-items: start;
-            font-size: 0.95rem; color: var(--text-secondary);
-        }
-        .clinic-feature::before {
-            content: '✦'; color: var(--gold); font-size: 0.7rem;
-            margin-top: 0.35rem; flex-shrink: 0;
-        }
-
-        .cta-section {
-            padding: 8rem 0; text-align: center;
-            position: relative; overflow: hidden;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute; top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .cta-section .section-title { max-width: 700px; margin: 0 auto 1.5rem; }
-        .cta-section .section-subtitle { margin: 0 auto 3rem; text-align: center; }
-
-        .footer { padding: 3rem 0; border-top: 1px solid var(--border); }
-        .footer .container {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .footer-left { font-size: 0.8rem; color: var(--text-muted); }
-        .footer-logo {
-            font-family: var(--font-body); font-weight: 200;
-            font-size: 1rem; letter-spacing: 0.3em;
-            text-transform: uppercase; color: var(--text-secondary);
-        }
-        .footer-right { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; }
-
-        .pdf-modal,
-        .image-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 10000;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .pdf-modal-inner,
-        .image-modal-inner {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            max-height: 90vh;
-            background: var(--bg-card);
-            border: 1px solid var(--gold-dark);
-            display: flex;
-            flex-direction: column;
-        }
-        .pdf-modal-header,
-        .image-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .pdf-modal-title,
-        .image-modal-title {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--gold-light);
-        }
-        .pdf-modal-close,
-        .image-modal-close {
-            width: 36px; height: 36px;
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        .pdf-modal-close:hover,
-        .image-modal-close:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .pdf-modal-body {
-            flex: 1;
-            overflow-y: auto;
-        }
-        .image-modal-body {
-            padding: 0;
-            background: #000;
-        }
-        .image-modal-body img {
-            width: 100%;
-            max-height: calc(90vh - 80px);
-            object-fit: contain;
-            display: block;
-        }
-        .modal-slide {
-            display: none;
-            width: 100%;
-        }
-        .modal-slide.active {
-            display: block;
-            animation: fadeUp 0.4s ease;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .fade-in {
-            opacity: 0; transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .mobile-toggle { display: flex; }
-            .nav-links.show {
-                display: flex;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(10, 10, 10, 0.98);
-                border-bottom: 1px solid var(--border);
-                flex-direction: column;
-                gap: 0;
-                padding: 1rem 2rem;
-            }
-            .nav-links.show li { padding: 0.8rem 0; }
-            .hero-grid,
-            .synergy-grid,
-            .clinic-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .wave-grid { grid-template-columns: repeat(2, 1fr); }
-            .feat-grid,
-            .science-cards { grid-template-columns: 1fr; }
-            .treat-list { grid-template-columns: 1fr; }
-            .vs-grid { grid-template-columns: 1fr; }
-            .section { padding: 4rem 0; }
-            .hero { min-height: auto; padding-top: 7rem; padding-bottom: 3rem; }
-            .hero-stats { gap: 1.5rem; }
-            .synergy-visual, .clinic-visual { aspect-ratio: 16/9; min-height: unset; max-height: 300px; }
-            .pricing-card { padding: 2.5rem 1.5rem; }
-            .footer .container { flex-direction: column; gap: 1rem; text-align: center; }
-        }
-        @media (max-width: 500px) {
-            .wave-grid { grid-template-columns: 1fr; }
-            .hero-stats { flex-direction: column; gap: 1rem; }
-        }
-    </style>
 </head>
+
 <body>
 
-    <nav class="nav" id="nav">
-        <div class="container">
-            <a href="#" class="nav-logo">ULTIMA <span>LED MASK</span></a>
-            <ul class="nav-links">
-                <li><a href="#wavelengths">Technológia</a></li>
-                <li><a href="#features">Jellemzők</a></li>
-                <li><a href="#synergy">Szinergia</a></li>
-                <li><a href="#pricing">Ár</a></li>
-                <li><a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="nav-cta">Érdeklődöm</a></li>
-            </ul>
-            <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
-                <span></span><span></span><span></span>
-            </button>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">The Ultimate Beauty</a>
+            <div class="hamburger" id="hamburger" aria-label="Menü megnyitása" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#technologia">Technológia</a>
+                <a href="#szinergia">Szinergia</a>
+                <a href="#protokoll">Kezelés és utókezelés</a>
+                <a href="#klinika">Klinika</a>
+                <a href="#foglalas" class="btn" style="color: white; font-size: 18px;">Időpontfoglalás</a>
+            </div>
         </div>
     </nav>
 
-    <section class="hero" id="hero">
+    <!-- HERO -->
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Prémium otthoni fényterápia</div>
-                <h1>
-                    ULTIMA LED<br>
-                    <span class="line-gold">Beauty Mask</span>
-                </h1>
-                <p class="hero-desc">
-                    4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. Meghosszabbítja és fokozza a klinikai kezelések hatását — otthonról.
+            <div class="hero-single">
+                <p class="eyebrow">Új generációs arcfiatalítás</p>
+
+                <h1 class="hero-title">Az időtlen, természetes szépség tudománya</h1>
+
+                <p class="hero-lead">
+                    Arcának fiatalos struktúráját építjük vissza, túlzások és szikék nélkül.
                 </p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">93 g</div>
-                        <div class="hero-stat-label">Ultrakönnyű</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">4</div>
-                        <div class="hero-stat-label">Hullámhossz</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">IP67</div>
-                        <div class="hero-stat-label">Vízálló</div>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary">Érdeklődöm</a>
-                    <a href="#wavelengths" class="btn-secondary">Felfedezem</a>
-                </div>
-                <div class="hero-banner">
-                    <img src="images/mask-hero.png" alt="ULTIMA LED Beauty Mask hero vizuál">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section" id="wavelengths">
-        <div class="container">
-            <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
-                <div class="section-label" style="justify-content:center;">4 terápiás hullámhossz</div>
-                <h2 class="section-title">Minden fénynek <em>megvan a feladata</em></h2>
-                <p class="section-subtitle" style="margin:0 auto;">A specifikus hullámhosszú fények eltérő mélységben hatolnak a bőrbe, más-más módon támogatva a regenerációt.</p>
-            </div>
-            <div class="wave-grid">
-                <div class="wave-card fade-in" data-color="nir">
-                    <div class="wave-nm">850</div>
-                    <div class="wave-unit">nanométer</div>
-                    <div class="wave-name">Közeli infravörös</div>
-                    <div class="wave-desc">Mélyszöveti megújulás. Eléri az izomzatot és a hipodermiszt, serkenti a sejtek regenerációját.</div>
-                </div>
-                <div class="wave-card fade-in" data-color="red">
-                    <div class="wave-nm">630</div>
-                    <div class="wave-unit">nanométer</div>
-                    <div class="wave-name">Vörös fény</div>
-                    <div class="wave-desc">Kollagén és elasztin fokozása. Fibroblaszt stimuláció a dermiszben — a bőr feszesebb és rugalmasabb lesz.</div>
-                </div>
-                <div class="wave-card fade-in" data-color="yellow">
-                    <div class="wave-nm">590</div>
-                    <div class="wave-unit">nanométer</div>
-                    <div class="wave-name">Sárga fény</div>
-                    <div class="wave-desc">Csökkenti a bőrpírt és kiegyenlíti a tónust. Nyugtatja az érzékeny bőrt és ragyogóbb megjelenést biztosít.</div>
-                </div>
-                <div class="wave-card fade-in" data-color="blue">
-                    <div class="wave-nm">415</div>
-                    <div class="wave-unit">nanométer</div>
-                    <div class="wave-name">Kék fény</div>
-                    <div class="wave-desc">Antibakteriális hatás. Csökkenti az aknét okozó baktériumokat és nyugtatja a gyulladt bőrt.</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <p class="hero-subtext">
+                    Fedezze fel az <strong>esztétikai medicina új korszakát!</strong> Az ULTIMA HILEFT™ technológia és a hialuronsavas feltöltések szinergiája sejtszinten újítja meg bőrét, miközben visszaadja az arc eredeti, harmonikus vonásait.
+                </p>
 
-    <section class="section features-bg" id="science">
-        <div class="container">
-            <div class="fade-in" style="text-align:center; max-width:700px; margin:0 auto;">
-                <div class="section-label" style="justify-content:center;">Tudományos háttér</div>
-                <h2 class="section-title">Fotobiomoduláció — <em>a fény mint üzemanyag</em></h2>
-                <p class="section-subtitle" style="margin:0 auto;">A LED-fény nem hőhatással dolgozik, hanem biológiai válaszreakciókat vált ki. Fokozza a sejtek energiatermelését és a természetes regenerációs folyamatokat.</p>
-            </div>
-            <div class="science-cards">
-                <div class="sci-card fade-in">
-                    <div class="sci-card-num">01</div>
-                    <h3>Mitokondriális aktiváció</h3>
-                    <p>A fényenergia célpontja a citokróm-c-oxidáz (CCO) enzim a mitokondrium belső membránjában. A nitrogén-monoxid disszociálódik, lehetővé téve az ATP-szintézis fokozódását.</p>
-                </div>
-                <div class="sci-card fade-in">
-                    <div class="sci-card-num">02</div>
-                    <h3>Kollagén génexpresszió</h3>
-                    <p>A Reaktív Oxigénfajták (ROS) aktiválják a kollagén és elasztin génexpresszióját. A fibroblasztok termelése fokozódik, ami feszesebb, sűrűbb bőrstruktúrát eredményez.</p>
-                </div>
-                <div class="sci-card fade-in">
-                    <div class="sci-card-num">03</div>
-                    <h3>Folyamatos aktiválás</h3>
-                    <p>A napi LED használat „bekapcsolva tartja" a kollagénaktivációt a klinikai kezelések között — így a bőr regenerációja nem lassul le az egyes alkalmak között.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features">
-        <div class="container">
-            <div class="fade-in">
-                <div class="section-label">Miért az ULTIMA?</div>
-                <h2 class="section-title">Prémium technológia, <em>minden részletben</em></h2>
-            </div>
-            <div class="feat-grid">
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">⊘</div>
-                    <h4>Ultrakönnyű: 93 gramm</h4>
-                    <p>A világ egyik legkönnyebb LED maszkja. Élelmiszer-minőségű szilikon, rugalmas kialakítás — elfér a kézitáskádban, tökéletes utazáshoz.</p>
-                </div>
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">◎</div>
-                    <h4>Beépített szemvédelem</h4>
-                    <p>Szabadalmaztatott szemárnyékoló rendszer — biztonságosan olvashatsz, nézhetsz TV-t vagy dolgozhatsz a kezelés alatt. Más maszkok ezt nem tudják.</p>
-                </div>
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">◈</div>
-                    <h4>Légáteresztő méhsejt dizájn</h4>
-                    <p>3D lebegő szerkezet a fény egyenletes eloszlásáért. Méhsejt kialakítás a hő- és párafelépülés ellen — kényelmes, még hosszabb használat mellett is.</p>
-                </div>
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">❋</div>
-                    <h4>IP67 vízálló</h4>
-                    <p>Por- és vízálló kialakítás. Egyszerűen tisztítható, higiénikus és tartós — a prémium anyagok hosszú élettartamot biztosítanak.</p>
-                </div>
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">✦</div>
-                    <h4>Szabadalmaztatott 3D struktúra</h4>
-                    <p>A lebegő szerkezet biztosítja, hogy minden LED optimális távolságról világítsa meg a bőrt — egyenletes, hatékony fényeloszlás az egész arcon.</p>
-                </div>
-                <div class="feat-card fade-in">
-                    <div class="feat-icon">◇</div>
-                    <h4>Bárhol, bármikor</h4>
-                    <p>Használd pihenés közben, olvasás, munka vagy utazás közben. A beépített szemvédelem lehetővé teszi, hogy a kezelés illeszkedjen a mindennapjaidba.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section features-bg" id="synergy">
-        <div class="container">
-            <div class="synergy-grid">
-                <div class="synergy-visual" onclick="document.getElementById('pdfModal').style.display='flex'">
-                    <img src="images/mask-slide-01.jpg" alt="ULTIMA LED Mask szinergia slide előnézet">
-                </div>
-                <div class="fade-in">
-                    <div class="section-label">Klinikai szinergia</div>
-                    <h2 class="section-title">A kezelések <em>biológiai kapcsolója</em></h2>
-                    <p class="section-subtitle">
-                        A maszk nem helyettesíti a klinikai kezeléseket — hanem aktívan meghosszabbítja és fokozza azok hatását az otthoni utóápolás során.
+                <div class="highlight-box" style="margin-bottom: 28px; max-width: 760px;">
+                    <p class="body-text" style="margin-bottom: 12px; color: var(--dark-text);">
+                        A kombinált protokoll a <strong>Volumen + Izom + Biológia</strong> hármas egységére épül:
                     </p>
-                    <ul class="synergy-list">
-                        <li class="synergy-item">
-                            <div class="synergy-num">01</div>
+
+                    <div class="concept-pillars">
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
+                            <div class="pillar-icon">+</div>
                             <div>
-                                <h4>Eredmények fenntartása</h4>
-                                <p>Meghosszabbítja a klinikai kezelések eredményeit és növeli azok tartósságát — a kollagénaktiváció a kezelések között is fennmarad.</p>
+                                <strong>Térfogat</strong>
+                                <p>Az elveszett térfogat természetes pótlása.</p>
+                                <div class="pillar-info">Az életkor előrehaladtával az arc mélyebb szöveteiben volumenvesztés alakul ki. A strukturális hialuronsavas kezelés visszaállítja az arc kontúrjait és természetes támaszt ad a szöveteknek.</div>
                             </div>
-                        </li>
-                        <li class="synergy-item">
-                            <div class="synergy-num">02</div>
+                        </div>
+
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
+                            <div class="pillar-icon">+</div>
                             <div>
-                                <h4>Gyorsabb regeneráció</h4>
-                                <p>Lézer, RF és HIFU kezelések után csökkenti a gyulladást és gyorsítja a szöveti helyreállítást a fényterápia ATP-pótló hatásával.</p>
+                                <strong>Izomtónus</strong>
+                                <p>Az arc tartószerkezetének megerősítése.</p>
+                                <div class="pillar-info">Az arc izmainak aktivitása és tónusa meghatározza az arckifejezést és a tartást. Az ULTIMA HILEFT™ technológia támogatja az izomtónust, így javítja az arc strukturális stabilitását.</div>
                             </div>
-                        </li>
-                        <li class="synergy-item">
-                            <div class="synergy-num">03</div>
+                        </div>
+
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
+                            <div class="pillar-icon">+</div>
                             <div>
-                                <h4>Töltések stabilizálása</h4>
-                                <p>A kollagénháló erősítésével megerősíti a bőrt a hialuronsavas töltőanyag felett — természetesebb, tartósabb eredmény.</p>
+                                <strong>Biológia</strong>
+                                <p>Sejtszintű kollagén-stimuláció és regeneráció.</p>
+                                <div class="pillar-info">A fotobiomoduláció és a mikrokeringés javítása serkenti a fibroblasztokat, ami fokozza a kollagéntermelést és javítja a bőr minőségét.</div>
                             </div>
-                        </li>
+                        </div>
+                    </div>
+
+                    <div class="concept-highlight">
+                        Az ULTIMA HILEFT technológia és a modern hialuronsavas töltések kombinációja egyszerre támogatja az izomtónust, a bőrregenerációt és a strukturális volumen helyreállítását.
+                    </div>
+                </div>
+            </div>
+
+            <p class="hero-subtext" style="font-style: italic; margin-bottom: 14px;">
+                A cél nem az arc megváltoztatása, hanem a természetes, fiatal struktúra visszaépítése — harmonikus, elegáns és természetes eredménnyel.
+            </p>
+
+            <div class="hero-note">
+                Orvosi konzultációval és személyre szabott kezelési tervvel.
+            </div>
+
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top: 30px;">
+                <a href="#foglalas" class="btn">Konzultáció igénylése</a>
+                <a href="#technologia" class="btn btn-secondary">Technológia megismerése</a>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- problema -->
+    <section id="oregedes">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">A probléma megértése</p>
+                <h2 class="section-title">Az arcöregedés komplex, többrétegű folyamat</h2>
+                <p class="section-subtitle">Nem elegendő egyetlen struktúrát kezelni. Az öregedés minden anatómiai réteget érint.</p>
+            </div>
+
+            <div class="grid-2" style="gap: 48px; align-items: center;">
+                <div>
+                    <div class="layer-diagram">
+                        <div class="layer-item">
+                            <div class="layer-name">Epidermis</div>
+                            <div class="layer-desc">Bőrbarrier romlása, sejtciklus lassulása → Fakó, matt bőrfelszín</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-name">Dermis</div>
+                            <div class="layer-desc">Fibroblaszt inaktivitás → Kollagén, elasztin és hialuronsav csökkenése</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-name">Szubkután zsír</div>
+                            <div class="layer-desc">Térfogat- és volumenvesztés → Arc kontúrjainak elmosódása</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-name">Izom & Csont</div>
+                            <div class="layer-desc">Izomtónus csökkenése, strukturális támasz gyengülése → Megereszkedés</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-dark">
+                    <span class="badge" style="margin-bottom: 16px;">Eredmény</span>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #FFF; margin-bottom: 16px;">
+                        Volumenvesztés + Bőrlazaság + Csökkent izomtónus
+                    </h3>
+                    <p style="color: #E8E6E3; font-size: 15px; margin-bottom: 24px;">
+                        Ezért a modern megoldás nem egyetlen problémát kezel, hanem <strong style="color: var(--primary-gold);">integrált protokollt</strong> alkalmaz, amely egyszerre hat több szinten.
+                    </p>
+                    <a href="#technologia" style="color: var(--primary-gold); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
+                        Ismerd meg a technológiát
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- a megoldas -->
+    <section id="technologia" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">A megoldás</p>
+                <h2 class="section-title">ULTIMA HILEFT™ technológia</h2>
+                <p class="section-subtitle">Új generációs, nem invazív esztétikai technológia, amely két kulcsfontosságú biológiai mechanizmust kombinál.</p>
+            </div>
+
+            <div class="grid-2" style="gap: 32px;">
+                <div class="card">
+                    <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8A96A" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Fotobiomoduláció</h3>
+                    <p class="body-text"><strong>Fényből energia:</strong> A speciális vörös fény mélyre hatol, ahol a sejtjeid „napelemként” nyelik el azt.</p>
+                    <p class="body-text"><strong>Sejtszintű ébredés:</strong> A fény hatására a sejtek energiatermelése felpörög. Olyan ez, mint egy ébresztő az ellustult sejteknek: hirtelen több erejük lesz a regenerációhoz.</p>
+                    <p class="body-text" style="margin-bottom: 0;"><strong>Eredmény: Fiatalosabb bőr.</strong> Beindul a természetes kollagéntermelés, a bőr mélyebben hidratálttá válik, a gyulladások és apró sérülések pedig látványosan gyorsabban gyógyulnak.</p>
+                </div>
+
+                <div class="card">
+                    <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #E4F0FF 0%, #E4FFE4 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8A96A" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Neuromuszkuláris stimuláció</h3>
+                    <p class="body-text"><strong>Mechanotranszdukció:</strong> Az izomösszehúzódás mechanikai jeleket küld a fibroblasztoknak, közvetlenül stimulálva a kollagéntermelést.</p>
+                    <p class="body-text"><strong>Keringés javítása:</strong> Fokozott vér- és nyirokkeringés.</p>
+                    <p class="body-text" style="margin-bottom: 0;"><strong>Emelő hatás:</strong> Javuló izomtónus, csökkenő megereszkedés, feszesebb bőrminőség.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 18px; color: var(--dark-text); margin: 0;">
+                    <p>Az ULTIMA rendszer egyedülálló módon <strong>egyszerre hat az izmokra és a bőrre</strong>, ami jelentős előnyt jelent a legtöbb esztétikai technológiával szemben.</p>
+                    <a href="images/slides/ULTIMA_HILEFT_Arc_Regeneráció_Tudomány.pdf" class="btn">tobbet szeretnek megtudni</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- miert mukodjunk jobban egyutt -->
+    <section id="szinergia">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">Miért működik jobban együtt?</p>
+                <h2 class="section-title">A két kezelés szinergiája</h2>
+                <p class="section-subtitle">Különböző anatómiai rétegeket céloznak, így együtt komplexebb, többdimenziós hatást hoznak létre.</p>
+
+                <button class="btn open-slides-btn" style="margin-top: 16px;">
+                    Részletes technológiai prezentáció megnyitása
+                </button>
+            </div>
+
+            <div class="infographic-wrapper" style="margin-bottom: 48px;">
+                <img src="images/synergy-infographic.png" alt="ULTIMA HILEFT és Hialuronsavas Feltöltés Szinergiája - Infografika" loading="lazy">
+            </div>
+
+            <div class="comparison-grid" style="margin-bottom: 48px;">
+                <div class="comparison-side">
+                    <p class="comparison-label">Hagyományos megközelítés</p>
+                    <h3 class="comparison-title">Kizárólag filler</h3>
+                    <ul class="bullet-list" style="margin-bottom: 16px;">
+                        <li>Statikus volumennövekedés</li>
+                        <li>Szubkután / Dermis rétegben hat</li>
+                        <li>Azonnali volumenpótlás</li>
                     </ul>
+                    <div style="padding: 12px 16px; background: #FFF5F5; border-radius: 8px; border-left: 3px solid #E57373;">
+                        <p style="font-size: 14px; color: #C62828; margin: 0;">
+                            <strong>Kockázat:</strong> "Puffadt" arc (overfilled syndrome), mivel a volumen nem kezeli az izomtónus hiányát.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
-                <div class="section-label" style="justify-content:center;">Ajánlott beavatkozások után</div>
-                <h2 class="section-title">Tökéletes kiegészítő <em>ezekhez a kezelésekhez</em></h2>
-            </div>
-            <div class="treat-list">
-                <div class="treat-item fade-in">
-                    <h4>Botox kezelés</h4>
-                    <p>Megelőzi az izomstimuláció hiánya miatti atrófiát, miközben a bőrminőség folyamatosan javul. Az arc tónusos marad, nem „lapos".</p>
-                </div>
-                <div class="treat-item fade-in">
-                    <h4>Hialuronsavas töltés</h4>
-                    <p>A kollagénháló megerősítésével stabilizálja a fillert, csökkenti a migrációt és elnyújtja az elégedettségi időszakot két töltés között.</p>
-                </div>
-                <div class="treat-item fade-in">
-                    <h4>Lézer & RF kezelések</h4>
-                    <p>A vörös és NIR fény ATP-t pótol a hősérült sejtekben, gyorsítva a hámosodást. A HILEFT-tel kombinálva a teljes szöveti vastagság kezelhető.</p>
-                </div>
-                <div class="treat-item fade-in">
-                    <h4>HIFU kezelés</h4>
-                    <p>Míg a HIFU a SMAS réteget célozza, a maszk a felületes dermisz és izomtónus minőségét javítja — kiegészítő rétegkezelés, trauma nélkül.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section features-bg">
-        <div class="container">
-            <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
-                <div class="section-label" style="justify-content:center;">Összehasonlítás</div>
-                <h2 class="section-title">Miért jobb, mint <em>a többi maszk?</em></h2>
-            </div>
-            <div class="vs-grid">
-                <div class="vs-col vs-ultima fade-in">
-                    <div class="vs-col-title">ULTIMA LED Mask</div>
-                    <ul class="vs-list">
-                        <li>Rugalmas, 93 g — bármikor viselhető</li>
-                        <li>Légáteresztő méhsejt kialakítás</li>
-                        <li>Precíziós LED-ek + szabadalmaztatott dizájn</li>
-                        <li>Beépített szemvédelem — biztonságos olvasáshoz, TV-zéshez</li>
-                        <li>IP67 vízálló — higiénikus, tartós</li>
-                        <li>Élelmiszer-minőségű szilikon</li>
-                        <li>4 terápiás hullámhossz</li>
+                <div class="comparison-side highlighted">
+                    <p class="comparison-label" style="color: var(--primary-gold);">Modern integrált megközelítés</p>
+                    <h3 class="comparison-title">Filler + HILEFT</h3>
+                    <ul class="bullet-list" style="margin-bottom: 16px;">
+                        <li style="color: var(--dark-text);">Dinamikus arcfiatalítás</li>
+                        <li style="color: var(--dark-text);">Izom + Dermis + Szubkután szinten hat</li>
+                        <li style="color: var(--dark-text);">Strukturális tartás és biológiai sejtmegújulás</li>
                     </ul>
+                    <div style="padding: 12px 16px; background: rgba(200, 169, 106, 0.1); border-radius: 8px; border-left: 3px solid var(--primary-gold);">
+                        <p style="font-size: 14px; color: var(--dark-text); margin: 0;">
+                            <strong>Eredmény:</strong> Aktiválja az arcizmokat, növeli az izomtömeget, feszesíti a szöveteket.
+                        </p>
+                    </div>
                 </div>
-                <div class="vs-col vs-others fade-in">
-                    <div class="vs-col-title">Egyéb prémium maszkok</div>
-                    <ul class="vs-list">
-                        <li>Merev, nehéz, kényelmetlen (200–450 g)</li>
-                        <li>Zárt kialakítás — hőfelépülés, izzadás</li>
-                        <li>Alapszintű LED-ek</li>
-                        <li>Nincs valódi szemvédelem — nem biztonságos képernyő előtt</li>
-                        <li>Nincs vízállóság</li>
-                        <li>Hagyományos szilikon / műanyag</li>
-                        <li>Gyakran csak 1–2 hullámhossz</li>
+            </div>
+
+            <div class="grid-3">
+                <div class="card card-compact">
+                    <h4 class="card-title" style="color: var(--primary-gold);">1. Kollagénháló stabilizálása</h4>
+                    <p class="body-text" style="margin-bottom: 0;">A fotobiomoduláció serkenti a fibroblasztokat új kollagénrostok termelésére. Egy biológiai kollagénmátrix jön létre a filler körül, stabilizálva azt és csökkentve a migráció kockázatát.</p>
+                </div>
+                <div class="card card-compact">
+                    <h4 class="card-title" style="color: var(--primary-gold);">2. Gyorsabb regeneráció</h4>
+                    <p class="body-text" style="margin-bottom: 0;">A LED fényterápia azonnali biológiai választ indít: gyulladáscsökkentés, mikrokeringés javítása, sebgyógyulás felgyorsítása. Jelentősen csökken az ödéma és véraláfutás (downtime).</p>
+                </div>
+                <div class="card card-compact">
+                    <h4 class="card-title" style="color: var(--primary-gold);">3. Természetesebb eredmény</h4>
+                    <p class="body-text" style="margin-bottom: 0;">A HILEFT feszessége megakadályozza a kizárólag fillerrel végzett kezelésekre jellemző "puffadt" hatást. Fókuszterületek: állvonal, középarc, mandibula régió.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- kiknek ajanjuk-->
+    <section id="jeloltek">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">Kinek ajánljuk?</p>
+                <h2 class="section-title">Ideális klinikai indikációk</h2>
+                <p class="section-subtitle">A kombinált protokoll különösen hatékony az alábbi esetekben.</p>
+            </div>
+
+            <div class="grid-3" style="gap: 20px;">
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="5"></circle><path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"></path></svg>
+                    </div>
+                    <p class="indication-title">Volumenvesztett arc</p>
+                    <div class="indication-details">
+                        Az életkorral az arc mélyebb zsírszövete csökken, ami az arc kontúrjainak ellaposodásához vezet. A strukturális hialuronsavas kezelés visszaállíthatja a természetes volumeneloszlást.
+                    </div>
+                </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"></path></svg>
+                    </div>
+                    <p class="indication-title">Bőrlazaság és megereszkedés</p>
+                    <div class="indication-details">
+                        A kollagén- és elasztintermelés csökkenése miatt az arc elveszíti feszességét. A kombinált kezelés a bőrt és a mélyebb struktúrákat is támogatja.
+                    </div>
+                </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                    </div>
+                    <p class="indication-title">„Fáradt" arckifejezés</p>
+                    <div class="indication-details">
+                        A középarc volumenvesztése és a szem alatti terület változásai miatt az arc fáradtabbnak tűnhet. A kezelés segíthet a frissebb, kipihentebb megjelenés visszaállításában.
+                    </div>
+                </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <p class="indication-title">Ozempic-face</p>
+                    <div class="indication-details">
+                        Gyors fogyás után gyakran jelentős volumenvesztés alakul ki az arcon. A strukturális feltöltés segíthet az arc arányainak visszaállításában.
+                    </div>
+                </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8M8 12h8"></path></svg>
+                    </div>
+                    <p class="indication-title">Férfi állvonal formázás</p>
+                    <div class="indication-details">
+                        Az állív és mandibula régió hangsúlyosabbá tétele javíthatja az arc karakterét és arányait.
+                    </div>
+                </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 5v2M12 17v2M5 12h2M17 12h2"></path></svg>
+                    </div>
+                    <p class="indication-title">Periorbitális rejuvenáció</p>
+                    <div class="indication-details">
+                        A szem körüli terület regenerációja javíthatja a bőr minőségét és a tekintet frissességét.
+                    </div>
+                </div>
+            </div>
+            <div class="indication-cta" style="text-align: center; margin-top: 48px;">
+                <p style="font-size: 18px; color: var(--dark-text); margin-bottom: 20px; font-family: 'Playfair Display', serif;">
+                    Nem biztos benne, hogy ez a kezelés önnek való?
+                </p>
+                <a href="#foglalas" class="btn">Időpontfoglalás konzultációra</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- A kezelés menete -->
+    <section id="protokoll" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">A kezelés menete</p>
+                <h2 class="section-title">3-lépéses integrált protokoll</h2>
+            </div>
+
+            <div class="grid-2" style="gap: 60px; align-items: start;">
+                <div>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h4 style="font-size: 18px; margin-bottom: 8px; font-weight: 600;">ULTIMA HILEFT előkezelés</h4>
+                                <p class="body-text" style="margin-bottom: 8px;">Cél: Mikrokeringés fokozása, fibroblaszt aktiválás, szöveti előkészítés.</p>
+                                <p style="font-size: 14px; color: var(--primary-gold);">A bőr „fogékonyabbá" válik a filler befogadására.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h4 style="font-size: 18px; margin-bottom: 8px; font-weight: 600;">Hialuronsavas feltöltés</h4>
+                                <p class="body-text" style="margin-bottom: 8px;">Célterületek: Járomív, nasolabialis redő, állvonal, ajak, tear trough.</p>
+                                <p style="font-size: 14px; color: var(--primary-gold);">Modern töltőanyagok: Juvederm, Restylane, Belotero.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h4 style="font-size: 18px; margin-bottom: 8px; font-weight: 600;">Regenerációs HILEFT kezelés</h4>
+                                <p class="body-text" style="margin-bottom: 8px;">Cél: Gyulladáscsökkentés, kollagén stimuláció, filler stabilizáció.</p>
+                                <p style="font-size: 14px; color: var(--primary-gold);">Azonnali nyugtató hatás, minimális downtime.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Treatment Gallery -->
+                    <div class="gallery-grid" style="margin-top: 40px;">
+                        <div class="gallery-item">
+                            <img src="images/treatment-injection.png" alt="Hialuronsavas kezelés">
+                            <span class="gallery-label">Precíziós injektálás</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/practitioner-prep.png" alt="Szakértő felkészülés">
+                            <span class="gallery-label">Szakértői felkészülés</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="background: var(--dark-text); border: none;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #FFF; margin-bottom: 24px;">Az eredmények</h3>
+                    <ul class="bullet-list">
+                        <li style="color: #E8E6E3;">Feszesebb arckontúrok</li>
+                        <li style="color: #E8E6E3;">Javuló bőrminőség és textúra</li>
+                        <li style="color: #E8E6E3;">Természetes volumen – nem „túltöltött"</li>
+                        <li style="color: #E8E6E3;">Ragyogóbb, hidratáltabb bőr</li>
+                        <li style="color: #E8E6E3;">Fiatalosabb, pihentebb arckifejezés</li>
+                        <li style="color: #E8E6E3;">Hosszabb ideig tartó eredmény</li>
+                        <li style="color: #E8E6E3;">Optimalizált volumen – kevesebb töltőanyag</li>
                     </ul>
-                </div>
-            </div>
+                    <div style="padding: 16px; background: rgba(200, 169, 106, 0.15); border-radius: 8px; margin-top: 24px;">
+                        <p style="color: #FFF; margin: 0; font-size: 15px;">
+                            A kezelés nem változtatja meg az arc karakterét – <strong style="color: var(--primary-gold);">csak visszaállítja annak természetes harmóniáját.</strong>
+                        </p>
+                    </div>
+                    <div class="protocol-extension-card">
+                        <div class="protocol-extension-label">Ajánlott utókezelés</div>
 
-            <table class="spec-table fade-in" style="margin-top:4rem;">
-                <thead>
-                    <tr>
-                        <th>Jellemző</th>
-                        <th>ULTIMA LED Mask</th>
-                        <th>Prémium alternatívák</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Súly</td>
-                        <td class="gold-val">93 g (ultrakönnyű)</td>
-                        <td>200–450 g</td>
-                    </tr>
-                    <tr>
-                        <td>Anyag</td>
-                        <td class="gold-val">Élelmiszer-minőségű szilikon</td>
-                        <td>Hagyományos szilikon / műanyag</td>
-                    </tr>
-                    <tr>
-                        <td>Szemvédelem</td>
-                        <td class="gold-val">Igen — képernyő előtt is biztonságos</td>
-                        <td>Nincs</td>
-                    </tr>
-                    <tr>
-                        <td>Vízállóság</td>
-                        <td class="gold-val">IP67</td>
-                        <td>Nincs</td>
-                    </tr>
-                    <tr>
-                        <td>Rugalmasság</td>
-                        <td class="gold-val">Hajlékony, utazásbarát</td>
-                        <td>Merev, nehézkes</td>
-                    </tr>
-                    <tr>
-                        <td>Szabadalmaztatott dizájn</td>
-                        <td class="gold-val">Igen</td>
-                        <td>Korlátozott / nincs</td>
-                    </tr>
-                    <tr>
-                        <td>Ár</td>
-                        <td class="gold-val">350 €</td>
-                        <td>341–455 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+                        <h3 class="protocol-extension-title">ULTIMA Home Recovery System</h3>
 
-    <section class="section pricing-bg" id="pricing">
-        <div class="container">
-            <div class="fade-in" style="text-align:center;">
-                <div class="section-label" style="justify-content:center;">Ár</div>
-                <h2 class="section-title">Befektetés a <em>mindennapi szépségbe</em></h2>
-            </div>
-            <div class="pricing-card fade-in">
-                <div class="pricing-treatment">ULTIMA LED Beauty Mask</div>
-                <div class="pricing-amount">350 €</div>
-                <div class="pricing-unit">ajánlott kiskereskedelmi ár</div>
-                <ul class="pricing-features">
-                    <li>4 terápiás hullámhossz (850, 630, 590, 415 nm)</li>
-                    <li>Ultrakönnyű, 93 grammos kialakítás</li>
-                    <li>Szabadalmaztatott 3D lebegő struktúra</li>
-                    <li>Beépített szemvédelmi rendszer</li>
-                    <li>IP67 vízálló — egyszerűen tisztítható</li>
-                    <li>Élelmiszer-minőségű szilikon</li>
-                </ul>
-                <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary">Érdeklődöm a vásárlásról</a>
-            </div>
-        </div>
-    </section>
+                        <p class="protocol-extension-text">
+                            A kombinált kezelések után a bőr regenerációja otthoni fotobiomodulációval tovább támogatható. Az ULTIMA Beauty Mask segíti a gyulladáscsökkentést, a kollagéntermelést és az eredmények fenntartását.
+                        </p>
 
-    <section class="section" id="clinic">
-        <div class="container">
-            <div class="clinic-grid">
-                <div class="clinic-visual" onclick="document.getElementById('imageModal').style.display='flex'">
-                    <img src="images/clinic-bottom.png" alt="The Ultimate Beauty Clinic belső tér vizuál">
-                </div>
-                <div class="fade-in">
-                    <div class="section-label">Elérhető nálunk</div>
-                    <h2 class="section-title">The Ultimate Beauty Clinic</h2>
-                    <p class="section-subtitle">Budapest, Buda — prémium esztétikai klinika</p>
-                    <div class="clinic-features">
-                        <div class="clinic-feature">Exkluzív budai villa, diszkrét környezetben</div>
-                        <div class="clinic-feature">Személyre szabott konzultáció a maszk használatáról</div>
-                        <div class="clinic-feature">HILEFT™ kezelésekkel kombinálható kúrák</div>
-                        <div class="clinic-feature">Nemzetközi protokollok, több mint 8.000 páciens tapasztalata</div>
-                        <div class="clinic-feature">Az ULTIMA technológia budapesti referencia klinikája</div>
+                        <ul class="protocol-extension-list">
+                            <li>Gyorsabb regeneráció</li>
+                            <li>Bőrpír és ödéma csökkentése</li>
+                            <li>Kollagénstimuláció támogatása</li>
+                            <li>Otthoni bőrmegújítás a kezelések között</li>
+                        </ul>
+
+                        <a href="maszk.html" class="protocol-extension-button">Beauty Mask megismerése</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="cta">
+    <!-- KLINIKA GALÉRIA -->
+    <section id="klinika" style="background-color: #FFFFFF;">
         <div class="container">
-            <div class="fade-in">
-                <div class="section-label" style="justify-content:center;">Következő lépés</div>
-                <h2 class="section-title">Vidd haza a <em>klinikai fényterápiát</em></h2>
-                <p class="section-subtitle">
-                    A bőröd megújulása nem áll meg a rendelő ajtajában. Az ULTIMA LED Beauty Mask-kal napi szinten tartod bekapcsolva a kollagénaktivációt.
-                </p>
-                <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; margin-top:1rem;">Érdeklődöm a maszkról</a>
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">A klinika</p>
+                <h2 class="section-title">Prémium környezet, professzionális kezelések</h2>
+                <p class="section-subtitle">Látogasson el budai klinikánkra, ahol a legmodernebb technológiával és személyre szabott megközelítéssel várjuk.</p>
+            </div>
+
+            <!-- Carousel -->
+            <div class="carousel-container" id="clinicCarousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="images/clinic-lounge.png" alt="Elegáns váróterem">
+                        <div class="slide-caption">
+                            <h4>Váróterem</h4>
+                            <p>Nyugodt, elegáns környezet a kezelések előtt</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/treatment-room.png" alt="Kezelőszoba">
+                        <div class="slide-caption">
+                            <h4>Kezelőszoba</h4>
+                            <p>Modern felszerelés, steril környezet</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/treatment-injection.png" alt="Hialuronsavas kezelés">
+                        <div class="slide-caption">
+                            <h4>Precíziós kezelés</h4>
+                            <p>Tapasztalt szakértők, biztonságos eljárás</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/practitioner-prep.png" alt="Felkészülés a kezelésre">
+                        <div class="slide-caption">
+                            <h4>Felkészülés</h4>
+                            <p>Minden kezelés gondos előkészítéssel kezdődik</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Előző">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Következő">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots">
+                <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+                <button class="carousel-dot" onclick="goToSlide(1)"></button>
+                <button class="carousel-dot" onclick="goToSlide(2)"></button>
+                <button class="carousel-dot" onclick="goToSlide(3)"></button>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- slide -->
+    <div id="slidesModal" class="modal">
+        <span class="close-modal" aria-label="Bezárás">&times;</span>
+        <div class="modal-content">
+            <div class="carousel-container" id="slidesCarousel" style="margin-bottom: 0;">
+                <div class="carousel-track" id="slidesTrack">
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-01.png" alt="Dia 1 - Új paradigma"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-02.png" alt="Dia 2 - Az arcöregedés"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-03.png" alt="Dia 3 - Modern megoldás"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-04.png" alt="Dia 4 - Fotobiomoduláció"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-05.png" alt="Dia 5 - Neuromuszkuláris stimuláció"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-06.png" alt="Dia 6 - Hialuronsav funkciója"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-07.png" alt="Dia 7 - Szinergia alapok"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-08.png" alt="Dia 8 - Kollagénháló"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-09.png" alt="Dia 9 - Gyorsabb regeneráció"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-10.png" alt="Dia 10 - Izomtónus"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-11.png" alt="Dia 11 - Indikációk"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-12.png" alt="Dia 12 - Protokoll"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-13.png" alt="Dia 13 - Biztonság"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-14.png" alt="Dia 14 - Paradigma"></div>
+                    <div class="carousel-slide"><img src="images/slides/pdf-slide-15.png" alt="Dia 15 - Konklúzió"></div>
+                </div>
+
+                <button class="carousel-btn prev" onclick="moveSlides(-1)" aria-label="Előző dia">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="carousel-btn next" onclick="moveSlides(1)" aria-label="Következő dia">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+
+                <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: #FFF; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">
+                    <span id="slideCounter">1</span> / 15
+                </div>
+            </div>
+
+            <div class="carousel-dots" id="slidesDots" style="margin-top: 16px; flex-wrap: wrap; padding: 0 16px;">
+                <button class="carousel-dot active" onclick="goToSlideNum(0)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(1)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(2)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(3)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(4)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(5)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(6)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(7)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(8)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(9)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(10)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(11)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(12)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(13)"></button>
+                <button class="carousel-dot" onclick="goToSlideNum(14)"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- BIZTONSÁG -->
+    <section id="biztonsag" style="background-color: #FFFFFF;">
         <div class="container">
-            <div class="footer-left">© 2025 The Ultimate Beauty Clinic. Minden jog fenntartva.</div>
-            <div class="footer-logo">ULTIMA</div>
-            <div class="footer-right">Budapest, Buda &nbsp;·&nbsp; www.theultimatebeauty.net</div>
+            <div class="grid-2" style="gap: 40px;">
+                <div class="card">
+                    <p class="eyebrow">Fontos tudni</p>
+                    <h2 class="section-title" style="margin-bottom: 24px;">Biztonsági profil</h2>
+                    <p class="body-text">Az ULTIMA kezelés biztonságos, nem invazív eljárás. A kezelési tervet mindig orvosi konzultáció alapján kell kialakítani.</p>
+                    <p class="body-text"><strong>A kezelés minden esetben szakértői orvosi konzultáció után történik.</strong></p>
+                    <div style="margin-top: 32px;">
+                        <a href="#foglalas" class="btn btn-outline" style="width: 100%;">Konzultáció kérése</a>
+                    </div>
+                </div>
+
+                <div class="card" style="background: #FFF9F5; border-color: #F5E6D3;">
+                    <h3 class="card-title" style="color: #C62828; display: flex; align-items: center; gap: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg> Kontraindikációk
+                    </h3>
+                    <ul class="bullet-list" style="margin-bottom: 0;">
+                        <li>Pacemaker vagy beültetett elektronikus eszköz</li>
+                        <li>Súlyos neuromuszkuláris betegségek</li>
+                        <li>Epilepszia</li>
+                        <li>Aktív daganatos betegség</li>
+                        <li>Terhesség</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / FOGLALÁS -->
+    <section id="foglalas">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <p class="eyebrow">Következő lépés</p>
+                <h2 class="section-title">Lépjen be a jövő arcfiatalításába</h2>
+                <p class="section-subtitle" style="margin-bottom: 0;">Kérjen időpontot, és tapasztalja meg a kombinált regenerációs koncepciót.</p>
+            </div>
+
+            <div class="card" style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF;">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Név *</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Teljes név" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Telefon *</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+36 30 123 4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email cím *</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="pelda@email.hu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest" class="form-label">Érdeklődés tárgya *</label>
+                        <select id="interest" name="interest" class="form-control" required>
+                            <option value="" disabled selected>Válasszon...</option>
+                            <option value="konzultacio">Általános konzultáció</option>
+                            <option value="ultima-hialuron">ULTIMA HILEFT + Hialuron kombináció</option>
+                            <option value="ultima">Csak ULTIMA HILEFT kezelés</option>
+                            <option value="filler">Hialuronsavas feltöltés</option>
+                            <option value="egyeb">Egyéb esztétikai kezelés</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Üzenet (opcionális)</label>
+                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Kérdés, megjegyzés..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Időpontot kérek</button>
+                    <p style="font-size: 12px; color: var(--secondary-text); text-align: center; margin-top: 16px;">
+                        A * jelölt mezők kitöltése kötelező. Adatait bizalmasan kezeljük.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--dark-text);">The Ultimate Beauty</h2>
+            <p class="body-text" style="margin-top: 8px;">Prémium esztétikai klinika Budán</p>
+
+            <div class="footer-links">
+                <a href="#">Adatvédelem</a>
+                <a href="#">ÁSZF</a>
+                <a href="#">Kapcsolat</a>
+                <a href="#foglalas">Időpontfoglalás</a>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 40px;">&copy; 2026 The Ultimate Beauty. Minden jog fenntartva.</p>
         </div>
     </footer>
 
-    <div class="pdf-modal" id="pdfModal" onclick="if(event.target===this)this.style.display='none'">
-        <div class="pdf-modal-inner" style="max-width:960px;">
-            <div class="pdf-modal-header">
-                <div class="pdf-modal-title">ULTIMA LED Beauty Mask — Kezelési szinergiák</div>
-                <div style="display:flex; align-items:center; gap:1rem;">
-                    <span style="font-size:0.75rem; color:var(--text-muted);" id="slideCounter">1 / 6</span>
-                    <button class="pdf-modal-close" onclick="document.getElementById('pdfModal').style.display='none'">&times;</button>
-                </div>
-            </div>
-            <div class="pdf-modal-body" style="overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center;">
-                <div class="modal-slide active" data-slide="1"><img src="images/mask-slide-01.jpg" alt="Slide 1" style="width:100%; display:block;"></div>
-                <div class="modal-slide" data-slide="2"><img src="images/mask-slide-02.jpg" alt="Slide 2" style="width:100%; display:block;"></div>
-                <div class="modal-slide" data-slide="3"><img src="images/mask-slide-03.jpg" alt="Slide 3" style="width:100%; display:block;"></div>
-                <div class="modal-slide" data-slide="4"><img src="images/mask-slide-04.jpg" alt="Slide 4" style="width:100%; display:block;"></div>
-                <div class="modal-slide" data-slide="5"><img src="images/mask-slide-05.jpg" alt="Slide 5" style="width:100%; display:block;"></div>
-                <div class="modal-slide" data-slide="6"><img src="images/mask-slide-06.jpg" alt="Slide 6" style="width:100%; display:block;"></div>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; border-top:1px solid var(--border); background:var(--bg-card);">
-                <button onclick="changeSlide(-1)" style="padding:0.5rem 1.5rem; background:none; border:1px solid var(--border); color:var(--text-secondary); cursor:pointer; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">&larr; Előző</button>
-                <div style="display:flex; gap:0.5rem;" id="slideDots"></div>
-                <button onclick="changeSlide(1)" style="padding:0.5rem 1.5rem; background:none; border:1px solid var(--border); color:var(--text-secondary); cursor:pointer; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">Következő &rarr;</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="image-modal" id="imageModal" onclick="if(event.target===this)this.style.display='none'">
-        <div class="image-modal-inner" style="max-width:1200px;">
-            <div class="image-modal-header">
-                <div class="image-modal-title">The Ultimate Beauty Clinic</div>
-                <button class="image-modal-close" onclick="document.getElementById('imageModal').style.display='none'">&times;</button>
-            </div>
-            <div class="image-modal-body">
-                <img src="images/clinic-bottom.png" alt="The Ultimate Beauty Clinic nagy kép">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 60);
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                document.getElementById('pdfModal').style.display = 'none';
-                document.getElementById('imageModal').style.display = 'none';
-            }
-            if (e.key === 'ArrowRight' && document.getElementById('pdfModal').style.display === 'flex') changeSlide(1);
-            if (e.key === 'ArrowLeft' && document.getElementById('pdfModal').style.display === 'flex') changeSlide(-1);
-        });
-
-        let currentSlide = 1;
-        const totalSlides = document.querySelectorAll('.modal-slide').length;
-        const dotsEl = document.getElementById('slideDots');
-
-        for (let i = 1; i <= totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.style.cssText = 'width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;';
-            dot.dataset.slide = i;
-            dot.onclick = () => goToSlide(i);
-            dotsEl.appendChild(dot);
-        }
-        updateDots();
-
-        function changeSlide(dir) {
-            let next = currentSlide + dir;
-            if (next < 1) next = totalSlides;
-            if (next > totalSlides) next = 1;
-            goToSlide(next);
-        }
-
-        function goToSlide(n) {
-            const active = document.querySelector('.modal-slide.active');
-            if (active) active.classList.remove('active');
-            const target = document.querySelector('.modal-slide[data-slide="' + n + '"]');
-            if (target) target.classList.add('active');
-            currentSlide = n;
-            document.getElementById('slideCounter').textContent = n + ' / ' + totalSlides;
-            updateDots();
-        }
-
-        function updateDots() {
-            dotsEl.querySelectorAll('div').forEach(d => {
-                d.style.background = parseInt(d.dataset.slide, 10) === currentSlide ? '#c9a96e' : '#3a3530';
-            });
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const href = a.getAttribute('href');
-                if (href === '#') {
-                    e.preventDefault();
-                    return;
-                }
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <!-- js -->
+    <script src="function.js"></script>
 </body>
+
 </html>
